@@ -89,6 +89,8 @@ Route::get('siswa', [SiswaController::class, 'index']);
 
 Route::resource('siswa', SiswaController::class);
 
+// Tugas Praktek Mandiri 2
+
 Route::get('post', [PostController::class, 'index']);
 
 Route::resource('post', PostController::class);
