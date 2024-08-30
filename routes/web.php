@@ -1,6 +1,16 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\User1Controller;
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\Siswa;
+use App\Models\User;
+use App\Models\User1;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,15 +60,11 @@ Route::get('tabel', function () {
     $barang = ['meja', 'pensil', 'bolpoin', 'lampu', 'kursi'];
 
     // return view('table', ['data' => $data, 'barang' => $barang2]);
-    return view('table', compact('barang'));
+    return view('tabel', compact('barang'));
 });
 
 Route::get('template', function () {
     return view('template');
-});
-
-Route::get('tabel', function () {
-    return view('tabel');
 });
 
 Route::get('template_user', function () {
@@ -77,3 +83,26 @@ Route::get('login', function () {
 Route::get('register', function () {
     return view('register');
 });
+
+Route::get('siswa', [SiswaController::class, 'index']);
+// Route::get('siswa', [SiswaController::class, 'index']);
+
+Route::resource('siswa', SiswaController::class);
+
+Route::get('post', [PostController::class, 'index']);
+
+Route::resource('post', PostController::class);
+
+Route::get('comment', [CommentController::class, 'index']);
+
+Route::resource('comment', CommentController::class);
+
+Route::get('user1', [User1Controller::class, 'index']);
+
+Route::resource('user1', User1Controller::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
