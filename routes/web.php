@@ -90,6 +90,8 @@ Route::get('siswa', [SiswaController::class, 'index']);
 // Tugas Praktek Mandiri 4
 Route::resource('siswa', SiswaController::class)->middleware(['auth','admin']);
 
+// Tugas Praktek Mandiri 3
+
 Route::get('post', [PostController::class, 'index']);
 
 Route::resource('post', PostController::class);
