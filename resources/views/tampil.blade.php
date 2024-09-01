@@ -22,7 +22,14 @@
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->alamat }}</td>
                 <td>{{ $item->Sekolah->nama_sekolah }}</td>
-                <td><a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-warning">Update</a></td>
+                <td>
+                    <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-warning">Update</a>
+                    <form action="{{ route('siswa.destroy', $item->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

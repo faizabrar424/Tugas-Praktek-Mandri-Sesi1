@@ -87,7 +87,8 @@ Route::get('register', function () {
 Route::get('siswa', [SiswaController::class, 'index']);
 // Route::get('siswa', [SiswaController::class, 'index']);
 
-Route::resource('siswa', SiswaController::class);
+// Tugas Praktek Mandiri 4
+Route::resource('siswa', SiswaController::class)->middleware(['auth','admin']);
 
 Route::get('post', [PostController::class, 'index']);
 
@@ -105,4 +106,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('tampilanuser', function () {
+    return view('tampilanuser');
+});
 
